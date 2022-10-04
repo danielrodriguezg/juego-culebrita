@@ -8,7 +8,16 @@ export const LEFT = "LEFT";
 export const UP = "UP";
 export const DOWN = "DOWN";
 
+export const INCREMENT_SCORE = "INCREMENT_SCORE";
+export const INCREASE_SNAKE = "INCREASE_SNAKE";
+
 export const SET_DIS_DIRECTION = "SET_DIS_DIRECTION";
+
+export const STOP_GAME = "STOP_GAME";
+
+export const RESET_SCORE = "RESET_SCORE";
+export const RESET = "RESET";
+
 
 export interface ISnakeCoord {
     x: number;
@@ -23,4 +32,20 @@ export const makeMove = (dx: number, dy: number, move: string) => ({
 export const setDisDirection = (direction: string) => ({
 	type: SET_DIS_DIRECTION,
 	payload: direction
+});
+
+export const increaseSnake = () => ({ 
+    type: INCREASE_SNAKE
+  });
+
+export const scoreUpdates = (type: string) => ({
+  type
+});
+
+export const stopGame = () => ({
+  type: STOP_GAME
+});
+
+export const resetGame = () => ({
+  type: RESET
 });

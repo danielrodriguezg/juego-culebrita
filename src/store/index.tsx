@@ -3,7 +3,7 @@ import {
     applyMiddleware
 } from "redux";
 import createSagaMiddleware from "redux-saga";
-import gameReducer from "./reducers";
+import {gameReducer} from "./reducers";
 import watcherSagas from "./sagas";
 const sagaMiddleware = createSagaMiddleware();
 
