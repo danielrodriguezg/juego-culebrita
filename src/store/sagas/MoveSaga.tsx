@@ -1,5 +1,5 @@
 import { CallEffect, delay, put, PutEffect } from "redux-saga/effects";
-import { DOWN, ISnakeCoord, LEFT, RIGHT, setDisDirection, STOP_GAME, UP } from "../actions";
+import { DOWN, ISnakeCoord, LEFT, RESET, RIGHT, setDisDirection, STOP_GAME, UP } from "../actions";
 
 export function* moveSaga(params: {
     type: string;
@@ -9,7 +9,7 @@ export function* moveSaga(params: {
     | PutEffect<{ type: string; payload: string }>
     | CallEffect<true>
   > {
-    while (params.type !== STOP_GAME) {
+    while (params.type !== RESET && params.type !== STOP_GAME) {
       yield put({
               type: params.type.split("_")[1],
               payload: params.payload,

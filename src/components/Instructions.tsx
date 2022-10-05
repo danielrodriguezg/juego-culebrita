@@ -6,28 +6,33 @@ export interface IInstructionProps {
 const Instruction = ({ resetBoard }: IInstructionProps) => (
   <Box mt={3}>
     <Heading as="h6" size="lg">
-      How to Play
+      ¿Como jugar?
     </Heading>
     <Heading as="h5" size="sm" mt={1}>
-    NOTE: Start the game by pressing <Kbd>d</Kbd>
+    NOTA: Inicia el juego presionando <Kbd>D</Kbd>, 
+    <br/>
+    Reanuda el juego oprimiendo las teclas de movimiento
     </Heading>
     <Flex flexDirection="row" mt={3}>
       <Flex flexDirection={"column"}>
         <span>
-          <Kbd>w</Kbd> Move Up
+          <Kbd>W</Kbd> Arriba
         </span>
         <span>
-          <Kbd>a</Kbd> Move Left
+          <Kbd>A</Kbd> Izquierda
         </span>
         <span>
-          <Kbd>s</Kbd> Move Down
+          <Kbd>S</Kbd> Abajo
         </span>
         <span>
-          <Kbd>d</Kbd> Move Right
+          <Kbd>D</Kbd> Derecha
+        </span>
+        <span>
+          <Kbd>P</Kbd> Pausa
         </span>
       </Flex>
       <Flex flexDirection="column">
-        <Button onClick={() => resetBoard()}>Reset game</Button>
+        <Button onClick={() => resetBoard()}>Reiniciar</Button>
       </Flex>
     </Flex>
   </Box>
