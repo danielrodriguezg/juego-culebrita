@@ -3,12 +3,10 @@ import { DOWN, INCREASE_SNAKE, INCREMENT_SCORE, ISnakeCoord, LEFT, RESET, RESET_
 export interface IGlobalState {
     snake: ISnakeCoord[] | [];
     disallowedDirection: string;
-    actualDirection: string;
     score: number;
 }
   
 const globalState: IGlobalState = {
-    //Postion of the entire snake
     snake: [
       { x: 580, y: 300 },
       { x: 560, y: 300 },
@@ -18,38 +16,16 @@ const globalState: IGlobalState = {
       
     ],
     disallowedDirection: "",
-    actualDirection: "",
     score: 0
 };
 
-function addIncrement (actualDirection : string) : ISnakeCoord{
-    switch(actualDirection){
-        case LEFT:   
-            return {
-                x: -20,
-                y: 0
-            }
-        case RIGHT:
-            return {
-                x: 20,
-                y: 0
-            }
-        case UP:
-            return{
-                x: 0,
-                y: -20
-            }
-        case DOWN:
-            return{
-                x: 0,
-                y: 20
-            }
-        default:
-            return{
-                x: 0,
-                y: 0
-            }
+function addIncrement (actualSnake:ISnakeCoord[]) : ISnakeCoord{
+    let x = actualSnake[actualSnake.length-2]?.x - actualSnake[actualSnake.length-1]?.x;
+    let y =  actualSnake[actualSnake.length-2]?.y - actualSnake[actualSnake.length-1]?.y;
+    return {
+        x, y
     }
+
 }
 
 export const gameReducer = (state = globalState, action: any) => {
@@ -66,8 +42,7 @@ export const gameReducer = (state = globalState, action: any) => {
             newSnake.pop();
             return {
                 ...state,
-                snake: newSnake,
-                actualDirection: action.type
+                snake: newSnake
             };
         }
         case SET_DIS_DIRECTION:{
@@ -78,7 +53,7 @@ export const gameReducer = (state = globalState, action: any) => {
         }
         case INCREASE_SNAKE:
             const snakeLen = state.snake.length;
-            const increment = addIncrement(state.actualDirection);
+            const increment = addIncrement(newSnake);
                 return {
                 ...state,
                 snake: [
