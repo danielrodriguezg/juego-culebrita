@@ -11,7 +11,7 @@ function App() {
         <Container maxW="container.lg" centerContent>
           <Heading as="h1" size="xl">Juego Culebrita</Heading>
           <ScoreCard/>
-          <CanvasBoard height={600} width={1000} />
+          <CanvasBoard height={500} width={700} />
         </Container>
       </ChakraProvider>
     </Provider>

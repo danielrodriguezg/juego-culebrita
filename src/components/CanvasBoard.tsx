@@ -19,7 +19,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
   const disallowedDirection = useSelector((state: IGlobalState) => state.disallowedDirection);
   const dispatch = useDispatch();
   const [pos, setPos] = useState<IObjectBody>(
-    generateRandomPosition(width - 40, height - 40)
+    generateRandomPosition(width - 20, height - 20)
   );
   const [isConsumed, setIsConsumed] = useState<boolean>(false);
   const [gameEnded, setGameEnded] = useState<boolean>(false);
@@ -88,7 +88,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
     window.removeEventListener("keypress", handleKeyEvents);
     dispatch(resetGame());
     dispatch(scoreUpdates(RESET_SCORE));
-    setPos(generateRandomPosition(width - 40, height - 40));
+    setPos(generateRandomPosition(width - 20, height - 20));
     window.addEventListener("keypress", handleKeyEvents);
   }, [dispatch, handleKeyEvents, height, width]);
 
@@ -124,7 +124,7 @@ const CanvasBoard = ({ height, width }: ICanvasBoard) => {
 
   useEffect(() => {
     if (isConsumed) {
-      const posi = generateRandomPosition(width - 40, height - 40);
+      const posi = generateRandomPosition(width - 20, height - 20);
       setPos(posi);
       setIsConsumed(false);
 
